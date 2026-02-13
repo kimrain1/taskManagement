@@ -4,8 +4,10 @@
  * Uses Backend API with Drizzle ORM database
  */
 
-// API Base URL
-const API_BASE = 'http://localhost:3000/api';
+// API Base URL - dynamically use current host for production, localhost for development
+const API_BASE = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000/api'
+    : `${window.location.protocol}//${window.location.host}/api`;
 
 // ==================== Session Storage ====================
 const SessionManager = {
