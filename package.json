@@ -1,0 +1,30 @@
+{
+  "name": "javascripticd0006",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "db:generate": "drizzle-kit generate --config=src/config/drizzle.config.js",
+    "db:migrate": "drizzle-kit migrate --config=src/config/drizzle.config.js",
+    "db:push": "drizzle-kit push --config=src/config/drizzle.config.js",
+    "db:studio": "drizzle-kit studio --config=src/config/drizzle.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "drizzle-kit": "^0.31.9",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "cors": "^2.8.6",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Pro - Premium Task Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- User Header with Logout -->
+        <div class="user-header" id="user-header">
+            <div class="user-info">
+                <div class="user-avatar" id="user-avatar">U</div>
+                <div class="user-details">
+                    <span class="user-name" id="user-name">User</span>
+                    <span class="user-email" id="user-email">user@example.com</span>
+                </div>
+            </div>
+            <div class="user-actions">
+                <button class="btn-logout" id="logout-btn">Logout</button>
+            </div>
+        </div>
+
+        <header>
+            <h1>TaskFlow Pro</h1>
+            <p>Organize your work, amplify your productivity</p>
+        </header>
+
+        <div class="stats" id="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="total-tasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="pending-tasks">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="in-progress-tasks">0</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="completed-tasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search tasks by title, description, or tags...">
+            </div>
+            <div class="filter-controls">
+                <select id="filter-status">
+                    <option value="">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <select id="filter-priority">
+                    <option value="">All Priority</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="task-form">
+                <h2 id="form-title">Add New Task</h2>
+                <div class="error-message" id="error-message"></div>
+                <div class="success-message" id="success-message"></div>
+                
+                <form id="task-form">
+                    <input type="hidden" id="task-id">
+                    
+                    <div class="form-group">
+                        <label for="title">Title *</label>
+                        <input type="text" id="title" required maxlength="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" maxlength="500"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status">
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="due-date">Due Date</label>
+                        <input type="date" id="due-date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="due-time">Due Time</label>
+                        <input type="time" id="due-time">
+                    </div>
+                    
+                    <div class="form-group reminder-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="reminder-enabled">
+                            <span>Enable Reminder</span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group" id="reminder-time-group" style="display: none;">
+                        <label for="reminder-time">Reminder Time</label>
+                        <input type="datetime-local" id="reminder-time">
+                        <small class="form-hint">Set when you want to be notified before the task is due</small>
+                    </div>
+                    
+                    <div class="form-group" id="reminder-minutes-group" style="display: none;">
+                        <label for="reminder-minutes">Quick Set (minutes before due)</label>
+                        <select id="reminder-minutes">
+                            <option value="0">At due time</option>
+                            <option value="5">5 minutes before</option>
+                            <option value="15">15 minutes before</option>
+                            <option value="30">30 minutes before</option>
+                            <option value="60">1 hour before</option>
+                            <option value="1440">1 day before</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tags">Tags (comma-separated)</label>
+                        <input type="text" id="tags" placeholder="work, urgent, project-x">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Add Task</button>
+                        <button type="button" class="btn btn-secondary" id="cancel-btn" style="display: none;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="task-list">
+                <h2>Tasks</h2>
+                <div id="tasks-container">
+                    <div class="empty-state">
+                        <p>No tasks yet. Create your first task!</p>
+                        <small>Use the form on the left to get started</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
