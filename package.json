@@ -1,16 +1,20 @@
 {
   "name": "javascripticd0006",
   "version": "1.0.0",
-  "description": "",
+  "description": "TaskFlow Pro - Task Management Application",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node src/server.js",
+    "postinstall": "npm rebuild better-sqlite3",
     "db:generate": "drizzle-kit generate --config=src/config/drizzle.config.js",
     "db:migrate": "drizzle-kit migrate --config=src/config/drizzle.config.js",
     "db:push": "drizzle-kit push --config=src/config/drizzle.config.js",
     "db:studio": "drizzle-kit studio --config=src/config/drizzle.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "keywords": [],
   "author": "",
